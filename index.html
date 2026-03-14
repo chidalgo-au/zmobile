@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobilePro | Premium Connectivity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  .pricing-container {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pricing-header {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 800;
+    margin-bottom: 40px;
+  }
+  .plan-card {
+    width: 100%;
+    max-width: 340px; /* Limits width on mobile so it doesn't stretch too far */
+    border: 1px solid #000;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards in a row are same height */
+  }
+  .card-banner {
+    background-color: #e2f997;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+  }
+  .card-body {
+    padding: 24px;
+    flex-grow: 1;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .plan-name {
+    color: #666;
+    font-size: 14px;
+  }
+  .plan-data {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 4px 0;
+    line-height: 1;
+  }
+  .plan-data span {
+    font-size: 20px;
+  }
+  .network-tag {
+    background: #eee;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .tag-5g {
+    background: #d8ccff;
+  }
+  .feature-list {
+    margin-top: 20px;
+    line-height: 2.2;
+    color: #444;
+    font-size: 14px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bullet {
+    color: #ccc;
+    font-size: 10px;
+  }
+  .accent-link {
+    color: #5a35ff;
+    text-decoration: underline;
+  }
+  .help-icon {
+    border: 1px solid #5a35ff;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #5a35ff;
+    font-weight: bold;
+  }
+  .pricing-section {
+    padding: 24px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+  }
+  .old-price {
+    font-size: 16px;
+    color: #666;
+    text-decoration: line-through;
+  }
+  .current-price {
+    font-size: 38px;
+    font-weight: 900;
+    color: #5a35ff;
+  }
+  .period {
+    font-size: 14px;
+    color: #666;
+  }
+  .fine-print {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+  }
+
+  /* Responsive Adjustments for Mobile Viewport */
+  @media (max-width: 640px) {
+    .pricing-container { padding: 20px 10px; }
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<div class="pricing-container">
+  <h2 class="pricing-header">Pick the plan that works for you</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto">
+    
+    <div class="plan-card">
+      <div class="card-banner">50% off 6 months</div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <div class="plan-name">Z20 Prepaid Plan</div>
+            <div class="plan-data">20 <span>GB</span></div>
+          </div>
+          <div class="network-tag">4G</div>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item"><span class="bullet">■</span> <b>4G</b> with unlimited speed</div>
+          <div class="feature-item"><span class="bullet">■</span> <b>Unlimited</b> national talk & text</div>
+          <div class="feature-item"><span class="bullet">■</span> Calls/SMS to <b>25 countries</b></div>
+          <div class="feature-item"><span class="bullet">■</span> 500 GB <span class="accent-link">data rollover</span> <span class="help-icon">?</span></div>
+          <div class="feature-item"><span class="bullet">■</span> <span class="accent-link">eSIM ready</span> <span class="help-icon">?</span></div>
+        </div>
+      </div>
+      <div class="pricing-section">
+        <div class="price-row">
+          <span class="old-price">$22</span>
+          <span class="current-price">$11<small style="font-size:16px">.00</small></span>
+          <span class="period">/mo</span>
+        </div>
+        <div class="fine-print">$22/mo after 6 months</div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="card-banner">50% off 6 months</div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <div class="plan-name">Z45 Prepaid Plan</div>
+            <div class="plan-data">45 <span>GB</span></div>
+          </div>
+          <div class="network-tag">4G</div>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item"><span class="bullet">■</span> <b>4G/5G</b> with unlimited speed</div>
+          <div class="feature-item"><span class="bullet">■</span> <b>Unlimited</b> national talk & text</div>
+          <div class="feature-item"><span class="bullet">■</span> Calls/SMS to <b>25 countries</b></div>
+          <div class="feature-item"><span class="bullet">■</span> 500 GB <span class="accent-link">data rollover</span> <span class="help-icon">?</span></div>
+          <div class="feature-item"><span class="bullet">■</span> <span class="accent-link">eSIM ready</span> <span class="help-icon">?</span></div>
+        </div>
+      </div>
+      <div class="pricing-section">
+        <div class="price-row">
+          <span class="old-price">$35</span>
+          <span class="current-price">$18<small style="font-size:16px">.00</small></span>
+          <span class="period">/mo</span>
+        </div>
+        <div class="fine-print">$35/mo after 6 months</div>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="card-banner">50% off 6 months</div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <div class="plan-name">Z100 Prepaid Plan</div>
+            <div class="plan-data">100 <span>GB</span></div>
+          </div>
+          <div class="network-tag tag-5g">5G</div>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item"><span class="bullet">■</span> <b>5G</b> with unlimited speed</div>
+          <div class="feature-item"><span class="bullet">■</span> <b>Unlimited</b> national talk & text</div>
+          <div class="feature-item"><span class="bullet">■</span> Calls/SMS to <b>25 countries</b></div>
+          <div class="feature-item"><span class="bullet">■</span> 500 GB <span class="accent-link">data rollover</span> <span class="help-icon">?</span></div>
+          <div class="feature-item"><span class="bullet">■</span> <span class="accent-link">eSIM ready</span> <span class="help-icon">?</span></div>
+        </div>
+      </div>
+      <div class="pricing-section">
+        <div class="price-row">
+          <span class="old-price">$65</span>
+          <span class="current-price">$30<small style="font-size:16px">.00</small></span>
+          <span class="period">/mo</span>
+        </div>
+        <div class="fine-print">$65/mo after 6 months</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
