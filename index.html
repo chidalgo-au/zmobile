@@ -13,17 +13,19 @@
         }
 
         body { 
-            margin: 0; padding: 0; background: #ffffff; 
+            margin: 0; 
+            padding: 0; 
+            background: #ffffff; 
             font-family: 'Inter', sans-serif; 
-            display: flex; justify-content: center;
+            display: flex;
+            justify-content: center;
         }
 
         .pricing-container {
             width: 100%;
-            max-width: 1300px;
-            padding: 40px 15px;
+            max-width: 1200px;
+            padding: 40px 20px;
             text-align: center;
-            box-sizing: border-box;
         }
 
         .main-title {
@@ -33,9 +35,9 @@
             letter-spacing: -1px;
         }
 
-        /* PILL SELECTOR */
+        /* Nav Pills - Mobile Only */
         .plan-selector {
-            display: none; /* Hidden on Desktop */
+            display: none; /* Hidden by default (Desktop) */
             justify-content: center;
             gap: 8px;
             margin-bottom: 24px;
@@ -48,29 +50,34 @@
         }
 
         .sel-btn {
-            border: none; background: none;
-            padding: 10px 20px; border-radius: 50px;
-            font-weight: 700; font-size: 14px;
-            cursor: pointer; transition: 0.3s;
+            border: none;
+            background: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .sel-btn.active { background: #000; color: #fff; }
+        .sel-btn.active {
+            background: #000;
+            color: #fff;
+        }
 
-        /* THE WRAPPER */
+        /* THE FLEX ENGINE */
         .plans-wrapper {
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center; /* Desktop: Center cards */
+            flex-direction: row;      /* Force side-by-side */
+            flex-wrap: nowrap;        /* DO NOT STACK */
+            justify-content: center;  /* Center cards on desktop */
             gap: 20px;
-            margin: 0 auto;
+            overflow-x: hidden;       /* No scroll needed on desktop */
             padding: 10px 0;
-            transition: all 0.3s ease;
         }
 
         .plan-card {
-            flex: 0 0 350px; /* Fixed base width */
-            max-width: 400px;
+            flex: 0 0 340px;          /* Fixed width for cards */
             border: 2px solid var(--border);
             border-radius: 24px;
             background: #fff;
@@ -78,50 +85,76 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-sizing: border-box;
+            transition: transform 0.2s ease;
         }
 
-        /* MOBILE OVERRIDES (Felix Style) */
-        @media (max-width: 1100px) {
-            .plan-selector { display: flex; }
-
-            .plans-wrapper {
-                justify-content: flex-start;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                width: 100%;
-                max-width: 400px; /* Constrain to one card width */
-                padding: 10px 20px;
-            }
-            
-            .plan-card {
-                flex: 0 0 100%; /* Card takes full width of the 400px wrapper */
-                scroll-snap-align: center;
-            }
-
-            .plans-wrapper::-webkit-scrollbar { display: none; }
-            .plans-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
-        }
-
-        /* STYLING DETAILS */
+        /* CARD INTERNALS */
         .card-banner {
-            background: var(--accent); padding: 12px;
-            text-align: center; font-weight: 800; font-size: 13px;
-            border-bottom: 2px solid var(--border); text-transform: uppercase;
+            background: var(--accent);
+            padding: 12px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 13px;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
         }
+
         .card-body { padding: 30px 25px; flex-grow: 1; }
+        
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .plan-label { color: #666; font-size: 12px; font-weight: 700; text-transform: uppercase; }
         .plan-data { font-size: 50px; font-weight: 800; margin: 5px 0; line-height: 1; letter-spacing: -2px; }
         .plan-data span { font-size: 20px; letter-spacing: 0; }
+
         .network-badge {
-            background: #eee; width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 12px; border: 1px solid #ddd; float: right;
+            background: #eee;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 12px;
+            border: 1px solid #ddd;
         }
+
+        .tag-5g { background: #d8ccff; border-color: #bfaaff; }
+
         .features { margin: 25px 0; padding: 0; list-style: none; }
         .feature-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 15px; }
         .bullet { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
-        .pricing-footer { padding: 25px; border-top: 1px solid #eee; background: #fafafa; text-align: center; }
+
+        .pricing-footer {
+            padding: 25px;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            text-align: center;
+        }
+
         .price { font-size: 42px; font-weight: 900; color: var(--primary); }
+
+        /* RESPONSIVE LOGIC */
+        @media (max-width: 1024px) {
+            .plans-wrapper {
+                justify-content: flex-start; /* Align to left for scrolling */
+                overflow-x: auto;            /* Enable swipe */
+                scroll-snap-type: x mandatory;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .plan-card {
+                flex: 0 0 85%;               /* Take up most of screen width */
+                scroll-snap-align: center;
+            }
+
+            .plan-selector { display: flex; } /* Show pills on mobile */
+
+            /* Hide scrollbar for clean mobile look */
+            .plans-wrapper::-webkit-scrollbar { display: none; }
+            .plans-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+        }
     </style>
 </head>
 <body>
@@ -139,9 +172,10 @@
         <div class="plan-card" id="c0">
             <div class="card-banner">Half price for 6 months</div>
             <div class="card-body">
-                <div class="network-badge">4G</div>
-                <p style="color:#666; font-size:12px; font-weight:700;">Z20 PREPAID</p>
-                <h2 class="plan-data">20<span>GB</span></h2>
+                <div class="card-top">
+                    <div><div class="plan-label">Z20 Prepaid</div><h2 class="plan-data">20<span>GB</span></h2></div>
+                    <div class="network-badge">4G</div>
+                </div>
                 <ul class="features">
                     <li class="feature-item"><div class="bullet"></div> 4G Unlimited Speed</li>
                     <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
@@ -154,9 +188,10 @@
         <div class="plan-card" id="c1">
             <div class="card-banner">Half price for 6 months</div>
             <div class="card-body">
-                <div class="network-badge">4G</div>
-                <p style="color:#666; font-size:12px; font-weight:700;">Z45 PREPAID</p>
-                <h2 class="plan-data">45<span>GB</span></h2>
+                <div class="card-top">
+                    <div><div class="plan-label">Z45 Prepaid</div><h2 class="plan-data">45<span>GB</span></h2></div>
+                    <div class="network-badge">4G</div>
+                </div>
                 <ul class="features">
                     <li class="feature-item"><div class="bullet"></div> 4G/5G Unlimited Speed</li>
                     <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
@@ -169,9 +204,10 @@
         <div class="plan-card" id="c2">
             <div class="card-banner">Half price for 6 months</div>
             <div class="card-body">
-                <div class="network-badge" style="background:#d8ccff">5G</div>
-                <p style="color:#666; font-size:12px; font-weight:700;">Z100 PREPAID</p>
-                <h2 class="plan-data">100<span>GB</span></h2>
+                <div class="card-top">
+                    <div><div class="plan-label">Z100 Prepaid</div><h2 class="plan-data">100<span>GB</span></h2></div>
+                    <div class="network-badge tag-5g">5G</div>
+                </div>
                 <ul class="features">
                     <li class="feature-item"><div class="bullet"></div> 5G Network Access</li>
                     <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
@@ -193,12 +229,8 @@
     }
 
     slider.addEventListener('scroll', () => {
-        if (window.innerWidth <= 1100) {
-            // Calculate index based on 100% width cards
-            let index = Math.round(slider.scrollLeft / slider.offsetWidth);
-            // Safety bound for the index
-            index = Math.max(0, Math.min(index, btns.length - 1));
-            
+        if (window.innerWidth <= 1024) {
+            let index = Math.round(slider.scrollLeft / (window.innerWidth * 0.8));
             btns.forEach((b, i) => b.classList.toggle('active', i === index));
         }
     });
