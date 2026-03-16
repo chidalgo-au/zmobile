@@ -1,240 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobilePro Pricing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Felix Mobile Plan Replica</title>
     <style>
         :root {
-            --primary: #5a35ff;
-            --accent: #e2f997;
-            --border: #000000;
+            --felix-green: #008a44;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --bg-grey: #f4f4f4;
+            --border-light: #ececec;
         }
 
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background: #ffffff; 
-            font-family: 'Inter', sans-serif; 
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px 0;
+            background-color: var(--white);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container for the Pill Functionality (sc-1fb7259d-4) */
+        .sc-1fb7259d-4.jvrdbD {
             display: flex;
             justify-content: center;
-        }
-
-        .pricing-container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .main-title {
-            font-size: clamp(24px, 5vw, 40px);
-            font-weight: 800;
-            margin-bottom: 30px;
-            letter-spacing: -1px;
-        }
-
-        /* Nav Pills - Mobile Only */
-        .plan-selector {
-            display: none; /* Hidden by default (Desktop) */
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            background: #f1f1f1;
-            padding: 5px;
-            border-radius: 50px;
+            margin: 20px auto 40px;
+            background: var(--bg-grey);
+            padding: 4px;
+            border-radius: 100px;
             width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .sel-btn {
+        .pill-btn {
             border: none;
-            background: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
+            background: transparent;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            border-radius: 100px;
+            transition: all 0.2s ease-in-out;
+            color: var(--text-dark);
         }
 
-        .sel-btn.active {
-            background: #000;
-            color: #fff;
+        .pill-btn.active {
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
-        /* THE FLEX ENGINE */
-        .plans-wrapper {
+        /* The Slick Slider Replica (sc-1fb7259d-18) */
+        .sc-1fb7259d-18.cSgOyj {
             display: flex;
-            flex-direction: row;      /* Force side-by-side */
-            flex-wrap: nowrap;        /* DO NOT STACK */
-            justify-content: center;  /* Center cards on desktop */
-            gap: 20px;
-            overflow-x: hidden;       /* No scroll needed on desktop */
-            padding: 10px 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0 15%; /* This creates the "peek" effect on both sides */
+            gap: 16px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
 
+        .sc-1fb7259d-18.cSgOyj::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Individual Card Styling - Exact Replica */
         .plan-card {
-            flex: 0 0 340px;          /* Fixed width for cards */
-            border: 2px solid var(--border);
+            flex: 0 0 100%; /* Occupies full width of the container minus padding */
+            scroll-snap-align: center;
+            background: var(--white);
+            border: 1px solid var(--border-light);
             border-radius: 24px;
-            background: #fff;
-            text-align: left;
+            padding: 32px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            transition: transform 0.2s ease;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
 
-        /* CARD INTERNALS */
-        .card-banner {
-            background: var(--accent);
-            padding: 12px;
-            text-align: center;
-            font-weight: 800;
-            font-size: 13px;
-            border-bottom: 2px solid var(--border);
+        .promo-badge {
+            background: var(--felix-green);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin-bottom: 16px;
             text-transform: uppercase;
         }
 
-        .card-body { padding: 30px 25px; flex-grow: 1; }
-        
-        .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-        .plan-label { color: #666; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-        .plan-data { font-size: 50px; font-weight: 800; margin: 5px 0; line-height: 1; letter-spacing: -2px; }
-        .plan-data span { font-size: 20px; letter-spacing: 0; }
+        .data-header {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+        }
 
-        .network-badge {
-            background: #eee;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .price-box {
+            margin: 12px 0 24px;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: #757575;
+            font-size: 18px;
+            margin-right: 4px;
+        }
+
+        .price-new {
+            font-size: 32px;
             font-weight: 800;
-            font-size: 12px;
-            border: 1px solid #ddd;
+            color: var(--felix-green);
         }
 
-        .tag-5g { background: #d8ccff; border-color: #bfaaff; }
+        .price-period {
+            font-size: 14px;
+            color: #757575;
+        }
 
-        .features { margin: 25px 0; padding: 0; list-style: none; }
-        .feature-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 15px; }
-        .bullet { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px 0;
+            flex-grow: 1;
+        }
 
-        .pricing-footer {
-            padding: 25px;
-            border-top: 1px solid #eee;
-            background: #fafafa;
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: var(--felix-green);
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .buy-button {
+            background-color: var(--felix-green);
+            color: var(--white);
             text-align: center;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: opacity 0.2s;
         }
 
-        .price { font-size: 42px; font-weight: 900; color: var(--primary); }
+          @media (max-width: 1025px) {
+            .sc-1fb7259d-18.cSgOyj { width: 350px;}
+          }
 
-        /* RESPONSIVE LOGIC */
-        @media (max-width: 1024px) {
-            .plans-wrapper {
-                justify-content: flex-start; /* Align to left for scrolling */
-                overflow-x: auto;            /* Enable swipe */
-                scroll-snap-type: x mandatory;
-                padding-left: 20px;
-                padding-right: 20px;
+        /* Desktop Breakpoint - Switch from Slider to Grid */
+        @media (min-width: 1025px) {
+            .sc-1fb7259d-4.jvrdbD {
+                display: none; /* Pills hidden on desktop as per site behavior */
             }
-            
+
+            .sc-1fb7259d-18.cSgOyj {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 20px;
+                overflow: visible;
+            }
+
             .plan-card {
-                flex: 0 0 85%;               /* Take up most of screen width */
-                scroll-snap-align: center;
+                flex: none;
             }
-
-            .plan-selector { display: flex; } /* Show pills on mobile */
-
-            /* Hide scrollbar for clean mobile look */
-            .plans-wrapper::-webkit-scrollbar { display: none; }
-            .plans-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
         }
     </style>
 </head>
 <body>
 
-<div class="pricing-container">
-    <h1 class="main-title">Pick the plan that works for you</h1>
-
-    <div class="plan-selector" id="pills">
-        <button class="sel-btn active" onclick="goto(0)">20GB</button>
-        <button class="sel-btn" onclick="goto(1)">45GB</button>
-        <button class="sel-btn" onclick="goto(2)">100GB</button>
+    <div class="sc-1fb7259d-4 jvrdbD">
+        <button class="pill-btn active" onclick="scrollToIndex(0)">25GB</button>
+        <button class="pill-btn" onclick="scrollToIndex(1)">50GB</button>
+        <button class="pill-btn" onclick="scrollToIndex(2)">Unlimited</button>
     </div>
 
-    <div class="plans-wrapper" id="slider">
-        <div class="plan-card" id="c0">
-            <div class="card-banner">Half price for 6 months</div>
-            <div class="card-body">
-                <div class="card-top">
-                    <div><div class="plan-label">Z20 Prepaid</div><h2 class="plan-data">20<span>GB</span></h2></div>
-                    <div class="network-badge">4G</div>
-                </div>
-                <ul class="features">
-                    <li class="feature-item"><div class="bullet"></div> 4G Unlimited Speed</li>
-                    <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
-                    <li class="feature-item"><div class="bullet"></div> 500GB Data Rollover</li>
-                </ul>
+    <div style="
+    align-items: center;
+    /* text-align: center; */
+    display: flex;
+    /* padding: 0px 40px; */
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+">
+<div class="sc-1fb7259d-18 cSgOyj" id="planSlider" style="
+    /* width: 350px; */
+">
+        
+        <div class="plan-card">
+            <div class="promo-badge">50% OFF for 3 months</div>
+            <h2 class="data-header">25GB</h2>
+            <div class="price-box">
+                <span class="price-old">$25</span>
+                <span class="price-new">$12.50</span>
+                <span class="price-period">/month</span>
             </div>
-            <div class="pricing-footer"><div class="price">$11<small style="font-size:18px">.00</small></div></div>
+            <ul class="feature-list">
+                <li class="feature-item">Unlimited talk and text</li>
+                <li class="feature-item">Unlimited data banking</li>
+                <li class="feature-item">5G/4G network (150Mbps cap)</li>
+                <li class="feature-item">No lock-in contract</li>
+            </ul>
+            <a href="#" class="buy-button">Buy now</a>
         </div>
 
-        <div class="plan-card" id="c1">
-            <div class="card-banner">Half price for 6 months</div>
-            <div class="card-body">
-                <div class="card-top">
-                    <div><div class="plan-label">Z45 Prepaid</div><h2 class="plan-data">45<span>GB</span></h2></div>
-                    <div class="network-badge">4G</div>
-                </div>
-                <ul class="features">
-                    <li class="feature-item"><div class="bullet"></div> 4G/5G Unlimited Speed</li>
-                    <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
-                    <li class="feature-item"><div class="bullet"></div> 500GB Data Rollover</li>
-                </ul>
+        <div class="plan-card">
+            <div class="promo-badge">50% OFF for 3 months</div>
+            <h2 class="data-header">50GB</h2>
+            <div class="price-box">
+                <span class="price-old">$30</span>
+                <span class="price-new">$15</span>
+                <span class="price-period">/month</span>
             </div>
-            <div class="pricing-footer"><div class="price">$18<small style="font-size:18px">.00</small></div></div>
+            <ul class="feature-list">
+                <li class="feature-item">Unlimited talk and text</li>
+                <li class="feature-item">Unlimited data banking</li>
+                <li class="feature-item">5G/4G network (150Mbps cap)</li>
+                <li class="feature-item">No lock-in contract</li>
+            </ul>
+            <a href="#" class="buy-button">Buy now</a>
         </div>
 
-        <div class="plan-card" id="c2">
-            <div class="card-banner">Half price for 6 months</div>
-            <div class="card-body">
-                <div class="card-top">
-                    <div><div class="plan-label">Z100 Prepaid</div><h2 class="plan-data">100<span>GB</span></h2></div>
-                    <div class="network-badge tag-5g">5G</div>
-                </div>
-                <ul class="features">
-                    <li class="feature-item"><div class="bullet"></div> 5G Network Access</li>
-                    <li class="feature-item"><div class="bullet"></div> National Talk & Text</li>
-                    <li class="feature-item"><div class="bullet"></div> 500GB Data Rollover</li>
-                </ul>
+        <div class="plan-card">
+            <div class="promo-badge">50% OFF for 6 months</div>
+            <h2 class="data-header">Unlimited</h2>
+            <div class="price-box">
+                <span class="price-old">$40</span>
+                <span class="price-new">$20</span>
+                <span class="price-period">/month</span>
             </div>
-            <div class="pricing-footer"><div class="price">$30<small style="font-size:18px">.00</small></div></div>
+            <ul class="feature-list">
+                <li class="feature-item">Unlimited mobile data (40Mbps)</li>
+                <li class="feature-item">Unlimited talk and text</li>
+                <li class="feature-item">5G/4G network</li>
+                <li class="feature-item">No lock-in contract</li>
+            </ul>
+            <a href="#" class="buy-button">Buy now</a>
         </div>
+
     </div>
 </div>
 
-<script>
-    const slider = document.getElementById('slider');
-    const btns = document.querySelectorAll('.sel-btn');
+    <script>
+        const slider = document.getElementById('planSlider');
+        const btns = document.querySelectorAll('.pill-btn');
 
-    function goto(index) {
-        const card = document.getElementById('c' + index);
-        slider.scrollTo({ left: card.offsetLeft - 20, behavior: 'smooth' });
-    }
-
-    slider.addEventListener('scroll', () => {
-        if (window.innerWidth <= 1024) {
-            let index = Math.round(slider.scrollLeft / (window.innerWidth * 0.8));
-            btns.forEach((b, i) => b.classList.toggle('active', i === index));
+        // Sync button click to slider movement
+        function scrollToIndex(index) {
+            const cardWidth = slider.querySelector('.plan-card').offsetWidth + 16;
+            slider.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+            updatePills(index);
         }
-    });
-</script>
 
-</body>
-</html>
+        // Update pills based on scroll position
+        function updatePills(index) {
+            btns.forEach(btn => btn.classList.remove('active'));
+            btns[index].classList.add('active');
+        }
+
+        slider.addEventListener('scroll', () => {
+            const index = Math.round(slider.scrollLeft / slider.querySelector('.plan-card').offsetWidth);
+            if(btns[index]) updatePills(index);
+        });
+    </script>
+
+</body></html>
