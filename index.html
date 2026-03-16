@@ -7,10 +7,15 @@
         :root {
             --felix-green: #008a44;
             --white: #ffffff;
-            --text-dark: #1a1a1a;
+            --text-dark: #202020;
             --bg-grey: #f4f4f4;
             --border-light: #ececec;
+            --brand-purple: #6542BE;
+            --brand-lime: #d9f99d;
+            --light-grey: #f8f8f9;
+            --border-black: #1a1a1a;           
         }
+
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -25,7 +30,7 @@
         .sc-1fb7259d-4.jvrdbD {
             display: flex;
             justify-content: center;
-            margin: 20px auto 40px;
+            margin: 20px auto 30px;
             background: var(--bg-grey);
             padding: 4px;
             border-radius: 100px;
@@ -69,33 +74,71 @@
             flex: 0 0 100%; /* Occupies full width of the container minus padding */
             scroll-snap-align: center;
             background: var(--white);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 32px;
+            border: 1px solid var(--border-black);
+            border-radius: 12px; 
+            /* padding: 32px;*/
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             position: relative;
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            z-index: 2;
+            overflow: hidden;
         }
 
-        .promo-badge {
-            background: var(--felix-green);
-            color: var(--white);
-            font-size: 12px;
+        .card-wrapper {
+       flex: 0 0 100%; /* Occupies full width of the container minus padding */
+            scroll-snap-align: center;
+            background: var(--white);
+            /* border: 1px solid var(--border-light); */
+            border-radius: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .promo-badge {         
+            position: absolute;
+            top: -43px;
+            left: 0;
+            right: 0;
+            background-color: #DCF995;
+            border-bottom: none;
+            border-radius: 17px 17px 0 0;
+            padding: 13px 0 25px;
+            text-align: center;
+            z-index: 1;
             font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            width: fit-content;
-            margin-bottom: 16px;
-            text-transform: uppercase;
+            font-size: 16px;
+            text-transform: none;
+
+        }
+        .card-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .network-badge {
+            position: absolute;
+            right: 30px;
+            top: 29px;
+            width: 85px;
+            height: 85px;
+            background: #e7e4e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 26px;
         }
 
         .data-header {
-            font-size: 48px;
-            font-weight: 900;
-            margin: 0;
-            line-height: 1;
+            background-color: var(--light-grey);
+            padding: 30px 30px;
+            position: relative;
         }
 
         .price-box {
@@ -109,39 +152,54 @@
             margin-right: 4px;
         }
 
-        .price-new {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--felix-green);
+        .data-main {
+            font-size: 50px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -2px;
+            line-height: 1;
         }
 
-        .price-period {
-            font-size: 14px;
-            color: #757575;
+        .plan-label {
+            font-size: 20px;
+            color: #555;
+            margin: 0 0 10px 0;
+            font-weight: 400;
         }
 
         .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 32px 0;
+            padding: 25px 30px;
             flex-grow: 1;
+            list-style: none;
+            margin: 0;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 16px;
-            font-size: 15px;
+            margin-bottom: 22px;
+            font-size: 18px;
+            color: var(--text-dark);
             line-height: 1.4;
         }
 
-        .feature-item::before {
-            content: '✓';
-            color: var(--felix-green);
-            font-weight: bold;
-            margin-right: 12px;
+        .bullet {
+            width: 10px;
+            height: 10px;
+            background-color: #d1d5db;
+            margin-right: 18px;
+            margin-top: 8px;
+            flex-shrink: 0;
         }
 
+
+        .pricing {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            color: var(--brand-purple);
+            margin-bottom: 10px;
+        }
         .buy-button {
             background-color: var(--felix-green);
             color: var(--white);
@@ -152,6 +210,58 @@
             font-weight: 700;
             font-size: 16px;
             transition: opacity 0.2s;
+        }
+        .strike {
+            font-size: 24px;
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 15px;
+            font-weight: 400;
+        }
+        .dollar {
+            font-size: 40px;
+            font-weight: 800;
+            align-self: flex-start;
+            margin-top: 12px;
+        }
+        .amt {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 0.9;
+        }
+        .cents {
+            font-size: 40px;
+            font-weight: 800;
+            align-self: flex-start;
+            margin-top: 12px;
+        }
+        .per {
+            font-size: 18px;
+            color: #444;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        .after-text {
+            font-size: 16px;
+            color: #666;
+        }
+        .link {
+            color: var(--brand-purple);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .help-circle {
+            border: 2px solid var(--brand-purple);
+            color: var(--brand-purple);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 6px;
         }
 
           @media (max-width: 1025px) {
@@ -177,6 +287,14 @@
                 flex: none;
             }
         }
+        .cards-layout{
+                align-items: center;      
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -187,69 +305,93 @@
         <button class="pill-btn" onclick="scrollToIndex(2)">Unlimited</button>
     </div>
 
-    <div style="
-    align-items: center;
-    /* text-align: center; */
-    display: flex;
-    /* padding: 0px 40px; */
-    -webkit-box-align: center;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-">
+    <div class="cards-layout">
 <div class="sc-1fb7259d-18 cSgOyj" id="planSlider" style="
     /* width: 350px; */
 ">
-        
-        <div class="plan-card">
+        <div class="card-wrapper">
             <div class="promo-badge">50% OFF for 3 months</div>
-            <h2 class="data-header">25GB</h2>
-            <div class="price-box">
-                <span class="price-old">$25</span>
-                <span class="price-new">$12.50</span>
-                <span class="price-period">/month</span>
+            <div class="plan-card">
+                
+                <div class="data-header">
+                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
+                    <h1 class="data-main">20 GB</h1>
+                    <div class="network-badge">4G</div>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><strong>Unlimited</strong> national talk &amp; text</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>International standard calls and SMS to <strong>25 countries</strong></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>Up to <strong>500 GB</strong> <span class="link">data rollover</span> <span class="help-circle">?</span></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><span class="link">eSIM ready</span> <span class="help-circle">?</span></span></li>
+                </ul>
+                <div class="card-footer">
+                    <div class="pricing">
+                        <span class="strike">$24</span>
+                        <span class="dollar">$</span>
+                        <span class="amt">12</span>
+                        <span class="cents">.00</span>
+                        <span class="per">/month</span>
+                    </div>
+                    <p class="after-text">$22 /month after the first 6 months</p>
+                 </div>
             </div>
-            <ul class="feature-list">
-                <li class="feature-item">Unlimited talk and text</li>
-                <li class="feature-item">Unlimited data banking</li>
-                <li class="feature-item">5G/4G network (150Mbps cap)</li>
-                <li class="feature-item">No lock-in contract</li>
-            </ul>
-            <a href="#" class="buy-button">Buy now</a>
         </div>
-
-        <div class="plan-card">
+        <div class="card-wrapper">
             <div class="promo-badge">50% OFF for 3 months</div>
-            <h2 class="data-header">50GB</h2>
-            <div class="price-box">
-                <span class="price-old">$30</span>
-                <span class="price-new">$15</span>
-                <span class="price-period">/month</span>
+            <div class="plan-card">
+                
+                <div class="data-header">
+                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
+                    <h1 class="data-main">20 GB</h1>
+                    <div class="network-badge">4G</div>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><strong>Unlimited</strong> national talk &amp; text</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>International standard calls and SMS to <strong>25 countries</strong></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>Up to <strong>500 GB</strong> <span class="link">data rollover</span> <span class="help-circle">?</span></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><span class="link">eSIM ready</span> <span class="help-circle">?</span></span></li>
+                </ul>
+                <div class="card-footer">
+                    <div class="pricing">
+                        <span class="strike">$24</span>
+                        <span class="dollar">$</span>
+                        <span class="amt">12</span>
+                        <span class="cents">.00</span>
+                        <span class="per">/month</span>
+                    </div>
+                    <p class="after-text">$22 /month after the first 6 months</p>
+                 </div>
             </div>
-            <ul class="feature-list">
-                <li class="feature-item">Unlimited talk and text</li>
-                <li class="feature-item">Unlimited data banking</li>
-                <li class="feature-item">5G/4G network (150Mbps cap)</li>
-                <li class="feature-item">No lock-in contract</li>
-            </ul>
-            <a href="#" class="buy-button">Buy now</a>
         </div>
-
-        <div class="plan-card">
+        <div class="card-wrapper">
             <div class="promo-badge">50% OFF for 6 months</div>
-            <h2 class="data-header">Unlimited</h2>
-            <div class="price-box">
-                <span class="price-old">$40</span>
-                <span class="price-new">$20</span>
-                <span class="price-period">/month</span>
+            <div class="plan-card">
+                
+                <div class="data-header">
+                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
+                    <h1 class="data-main">20 GB</h1>
+                    <div class="network-badge">4G</div>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><strong>Unlimited</strong> national talk &amp; text</span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>International standard calls and SMS to <strong>25 countries</strong></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span>Up to <strong>500 GB</strong> <span class="link">data rollover</span> <span class="help-circle">?</span></span></li>
+                    <li class="feature-item"><div class="bullet"></div><span><span class="link">eSIM ready</span> <span class="help-circle">?</span></span></li>
+                </ul>
+                <div class="card-footer">
+                    <div class="pricing">
+                        <span class="strike">$24</span>
+                        <span class="dollar">$</span>
+                        <span class="amt">12</span>
+                        <span class="cents">.00</span>
+                        <span class="per">/month</span>
+                    </div>
+                    <p class="after-text">$22 /month after the first 6 months</p>
+                 </div>
             </div>
-            <ul class="feature-list">
-                <li class="feature-item">Unlimited mobile data (40Mbps)</li>
-                <li class="feature-item">Unlimited talk and text</li>
-                <li class="feature-item">5G/4G network</li>
-                <li class="feature-item">No lock-in contract</li>
-            </ul>
-            <a href="#" class="buy-button">Buy now</a>
         </div>
 
     </div>
