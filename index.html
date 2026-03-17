@@ -3,7 +3,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felix Mobile Plan Replica</title>
+
+    <style>@font-face {font-weight:300;font-family:"Jug Sharp Grotesk";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-light-20-c9ea279673a6666305bc-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:400;font-family:"Jug Sharp Grotesk";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-book-20-12a886c2096f9988e8b5-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:500;font-family:"Jug Sharp Grotesk";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-medium-20-33477c1d0be78e42bcda-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:600;font-family:"Jug Sharp Grotesk";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-semibold-20-466107c7a290dd22325a-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:400;font-family:"Jug Sharp Grotesk 25";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-book-25-7a50f1e68ef282ac5824-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:500;font-family:"Jug Sharp Grotesk 25";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-medium-25-c4ad6431703523c17277-1.woff2") format("woff2");font-display:swap;}
+    @font-face {font-weight:600;font-family:"Jug Sharp Grotesk 25";font-style:normal;src:url("https://assets.zip.co/static-assets/sharp-grotesk-semibold-25-f140b40e712cb7e4b71f-1.woff2") format("woff2");font-display:swap;}
+    </style>    
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-light-20-c9ea279673a6666305bc-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-book-20-12a886c2096f9988e8b5-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-medium-20-33477c1d0be78e42bcda-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-medium-20-33477c1d0be78e42bcda-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-book-25-7a50f1e68ef282ac5824-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-medium-25-c4ad6431703523c17277-1.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://assets.zip.co/static-assets/sharp-grotesk-semibold-25-f140b40e712cb7e4b71f-1.woff2" type="font/woff2" crossorigin="anonymous">
+
     <style>
+   
         :root {
             --felix-green: #008a44;
             --white: #ffffff;
@@ -13,18 +31,26 @@
             --brand-purple: #6542BE;
             --brand-lime: #d9f99d;
             --light-grey: #f8f8f9;
-            --border-black: #1a1a1a;           
+            --border-black: #1a1a1a;   
+            --primary-font: "Jug Sharp Grotesk", sans-serif;
+            --tertiary-font: "Jug Sharp Grotesk 25", sans-serif;  
+             --light: 300;
+            --regular: 400;
+            --medium: 500;
+            --semibold: 600;                            
         }
 
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: var(--primary-font);
             margin: 0;
             padding: 20px 0;
             background-color: var(--white);
             color: var(--text-dark);
             -webkit-font-smoothing: antialiased;
         }
+
+
 
         /* Container for the Pill Functionality (sc-1fb7259d-4) */
         .sc-1fb7259d-4.jvrdbD {
@@ -156,8 +182,9 @@
             font-size: 50px;
             font-weight: 900;
             margin: 0;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             line-height: 1;
+            font-family: var(--tertiary-font);
         }
 
         .plan-label {
@@ -177,13 +204,13 @@
         .feature-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 22px;
+            margin-bottom: 15px;
             font-size: 18px;
             color: var(--text-dark);
             line-height: 1.4;
         }
 
-        .feature-item:last{
+        .feature-item:last-child{
             margin-bottom: 5px;
         }
 
@@ -203,6 +230,11 @@
             justify-content: center;
             color: var(--brand-purple);
             margin-bottom: 10px;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;         
         }
         .buy-button {
             background-color: var(--felix-green);
@@ -291,13 +323,53 @@
                 flex: none;
             }
         }
+
+        .divider {
+            height: 60px;
+            width: 1px;
+            background-color: #9b7fd3;
+            margin: 0 15px;
+            display: inline-block;
+        }
+
+         .price-hero {
+            font-size: 2.8rem;
+            font-weight: 900;
+        }
+
+        .price-hero span {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
         .cards-layout{
-                align-items: center;      
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                flex-direction: column;
-                justify-content: center;
+            align-items: center;      
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gb-text{
+            font-size: 35px;
+            margin-left: 6px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        .dollar-text {
+            font-size: 35px;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .mth {
+            margin-top: 18px;
+            margin-left: 5px;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -314,13 +386,17 @@
     /* width: 350px; */
 ">
         <div class="card-wrapper">
-            <div class="promo-badge">50% OFF for 3 months</div>
+            <div class="promo-badge">Get 50% off your first 6 months</div>
             <div class="plan-card">
-                
                 <div class="data-header">
-                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
-                    <h1 class="data-main">20 GB</h1>
-                    <div class="network-badge">4G</div>
+                    <div class="card-header">
+                        <span class="data-main">20</span>
+                        <span class="gb-text">GB</span>
+                        <span class="divider"></span>
+                        <span class="dollar-text">$</span>
+                        <span class="price-hero">12</span>
+                        <span class="mth"> /mth</span>
+                    </div>
                 </div>
                 <ul class="feature-list">
                     <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
@@ -342,13 +418,18 @@
             </div>
         </div>
         <div class="card-wrapper">
-            <div class="promo-badge">50% OFF for 3 months</div>
+            <div class="promo-badge">Get 50% off your first 6 months</div>
             <div class="plan-card">
                 
                 <div class="data-header">
-                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
-                    <h1 class="data-main">20 GB</h1>
-                    <div class="network-badge">4G</div>
+                    <div class="card-header">
+                        <span class="data-main">45</span>
+                        <span class="gb-text">GB</span>
+                        <span class="divider"></span>
+                        <span class="dollar-text">$</span>
+                        <span class="price-hero">19</span>
+                        <span class="mth"> /mth</span>
+                    </div>
                 </div>
                 <ul class="feature-list">
                     <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
@@ -370,13 +451,18 @@
             </div>
         </div>
         <div class="card-wrapper">
-            <div class="promo-badge">50% OFF for 6 months</div>
+            <div class="promo-badge">Get 50% off your first 6 months</div>
             <div class="plan-card">
                 
                 <div class="data-header">
-                    <h3 class="plan-label">Z20 Prepaid Plan</h3>
-                    <h1 class="data-main">20 GB</h1>
-                    <div class="network-badge">4G</div>
+                    <div class="card-header">
+                        <span class="data-main">100</span>
+                        <span class="gb-text">GB</span>
+                        <span class="divider"></span>
+                        <span class="dollar-text">$</span>
+                        <span class="price-hero">33</span>
+                        <span class="mth"> /mth</span>
+                    </div>
                 </div>
                 <ul class="feature-list">
                     <li class="feature-item"><div class="bullet"></div><span><strong>4G</strong> with unlimited speed</span></li>
